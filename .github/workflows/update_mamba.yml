@@ -1,0 +1,34 @@
+name: Update Env Micromamba Local
+
+on:
+  push:
+    branches:
+      - main        # Run in tu terminal: 'git branch --show-current' 4know tu branch
+
+
+jobs:
+  update-env:
+    runs-on: self-hosted  # Obliga a run it in tu Debian local
+
+    steps:
+      - name: Download changes of repo
+        uses: actions/checkout@v4
+
+      - name: Update package in Micromamba local
+        run: |
+          # 1. Load the env of Micromamba in the sesion of Bash of GitHub Actions
+          # In Debian, the path by default of binary suele be ~/.local/bin/micromamba
+          # o estar ya expuesta in the sys if lo agregaste al PATH.
+          export MAMBA_EXE="$HOME/.local/bin/micromamba"
+          eval "$($MAMBA_EXE shell hook --shell bash)"
+          
+          # 2. Activar tu env specific
+          micromamba activate manuscript-jpeg2md
+          
+          # 3. Instalation editable local
+          # This update the package enlazando directly the code fuente actual
+          pip install -e .
+
+          # 3. Update the 2º env disc-1v1
+          micromamba activate disc-1v1
+          pip install -e .
