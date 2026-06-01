@@ -1,0 +1,20 @@
+name: surya-ocr0171
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+
+  # 🔒 FULL PYTORCH STACK COHERENTE
+  - pytorch=2.7.1=cpu*
+  - torchvision=0.22.0=cpu*
+
+  - numpy
+  - requests
+  - pip
+  - typing_extensions
+
+  # 🔒 bajar transformers a zona segura
+  - pip:
+      - transformers==4.56.1 # transformers==4.56.1 version min de transformers para que funcione surya-ocr==0.17.1
+      - surya-ocr==0.17.1
