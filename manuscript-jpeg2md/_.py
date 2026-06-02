@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from pathlib import Path
+import json
 import sys
 
 from PIL import Image
@@ -17,6 +18,22 @@ def load_imgs(folder: Path) -> list[Path]:
     for e in exts:
         imgs.extend(folder.glob(e))
     return sorted(imgs)
+
+
+def build_notebook(lines: list[str]) -> dict:
+    """Build a minimal nbformat-4 notebook with one markdown cell."""
+    return {
+        'nbformat': 4,
+        'nbformat_minor': 5,
+        'metadata': {},
+        'cells': [
+            {
+                'cell_type': 'markdown',
+                'metadata': {},
+                'source': [l + '\n' for l in lines[:-1]] + lines[-1:],
+            }
+        ] if lines else [],
+    }
 
 
 def main() -> None:
@@ -54,7 +71,7 @@ def main() -> None:
         try:
             image = Image.open(img_path).convert('RGB')
 
-            # 🔥 RECONOCIMIENTO & DETECCIÓN INTEGRADA (SURYA 0.17.1)
+            # 🔥 RECONOCIMIENT & DETECTION INTEGRATED (SURYA 0.17.1)
             preds = recognizer([image], det_predictor=detector)
 
             lines : list[str] = []
@@ -64,8 +81,11 @@ def main() -> None:
                     if txt:
                         lines.append(txt)
 
-            out_file = img_path.with_suffix('.md')
-            out_file.write_text('\n'.join(lines), encoding='utf-8')
+            out_file = img_path.with_suffix('.ipynb')
+            out_file.write_text(
+                json.dumps(build_notebook(lines), ensure_ascii=False, indent=1),
+                encoding='utf-8',
+            )
 
             print(f'    -> {out_file.name}')
 
