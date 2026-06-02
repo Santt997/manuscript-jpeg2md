@@ -3,9 +3,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "manuscript-jpeg2md"
-version = "0.1.4"
-description = "cast from manuscript-jpeg to md"
+name = "manuscript-jpeg2ipynb"
+version = "0.1.5"
+description = "cast from manuscript-jpeg to ipynb"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [

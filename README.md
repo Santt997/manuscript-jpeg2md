@@ -1,1 +1,1 @@
-# manuscript-jpeg2md
+# manuscript-jpeg2ipynb

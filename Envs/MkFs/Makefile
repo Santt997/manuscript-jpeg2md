@@ -18,7 +18,7 @@ remove:
 run:
 	@eval "$$(micromamba shell hook --shell bash)" && \
 	micromamba activate $(ENV_NAME) && \
-	python ../../manuscript-jpeg2md/_.py "$(TARGET)"
+	python ../../manuscript-jpeg2ipynb/_.py "$(TARGET)"
 
 debug:
 	@echo "ENV_NAME=$(ENV_NAME)"

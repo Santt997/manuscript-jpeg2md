@@ -11,7 +11,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}===============================================${NC}"
-echo -e "${BLUE}      manuscript-jpeg2md PyPI Release Assistant${NC}"
+echo -e "${BLUE}      manuscript-jpeg2ipynb PyPI Release Assistant${NC}"
 echo -e "${BLUE}===============================================${NC}"
 
 # Navigate to the script's directory to ensure relative paths work
