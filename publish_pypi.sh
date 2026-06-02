@@ -94,7 +94,7 @@ case $option in
         $PYTHON_BIN -m twine upload --verbose dist/*
         echo -e "${GREEN}Successfully published to PyPI!${NC}"
         echo -e "You and anyone else can now install it using:"
-        echo -e "  ${YELLOW}pip install python-graphviz-plus${NC}"
+        echo -e "  ${YELLOW}pip install manuscript-jpeg2ipynb${NC}"
         ;;
     *)
         echo -e "\n${YELLOW}Publishing canceled. The build files remain in the dist/ folder.${NC}"
