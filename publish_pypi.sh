@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Exit immediately if a cmd exits w a non-zero status
+# Exit immediately if a cmd exits w a non-0 status
 set -e
 
 # Define colors 4output
@@ -20,7 +20,7 @@ cd "$(dirname "$0")"
 # 1. Check Python installation (Targeting 'pypi' micromamba env)
 echo -e "\n${BLUE}[1/5] Checking Micromamba 'pypi' env...${NC}"
 
-# Check if the 'pypi' env is already active in the current shell
+# Check if the 'pypi' env is already active in the curr shell
 if [[ "$MAMBA_PREFIX" == *"/envs/pypi" ]]; then
     PYTHON_BIN="$MAMBA_PREFIX/bin/python"
 else
@@ -87,7 +87,7 @@ case $option in
         $PYTHON_BIN -m twine upload --repository testpypi dist/*
         echo -e "${GREEN}Successfully uploaded to TestPyPI!${NC}"
         echo -e "You can try installing it using:"
-        echo -e "  ${YELLOW}pip install --index-url https://pypi.org --extra-index-url https://pypi.org python-graphviz-plus${NC}"
+        echo -e "  ${YELLOW}pip install --index-url https://pypi.org --extra-index-url https://pypi.org manuscript-jpeg2ipynb${NC}"
         ;;
     2)
         echo -e "\n${GREEN}Uploading to PyPI (Official Release)...${NC}"
