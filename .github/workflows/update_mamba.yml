@@ -23,10 +23,10 @@ jobs:
           eval "$($MAMBA_EXE shell hook --shell bash)"
           
           # 2. Activar tu env specific
-          micromamba activate manuscript-jpeg2md
+          micromamba activate manuscript-jpeg2ipynb
           
           # 3. Instalation editable local
-          # This update the package enlazando directly the code fuente actual
+          # This update the package enlazando directamente el código fuente actual
           pip install -e .
 
           # 3. Update the 2º env disc-1v1
